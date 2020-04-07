@@ -3,7 +3,12 @@ package edu.up.cs301threadslab;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
-
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import java.util.Vector;
 import java.util.Random;
 
@@ -16,14 +21,17 @@ public class StarAnimation extends Animation {
 
     /* the field of stars */
     public int numStars = 100;
+    public AnimationView myAV;
     private Vector<Star> field = new Vector<Star>();
 
     /* when this is set to 'false' the next animation frame won't twinkle */
     private boolean twinkle = true;
 
     /** ctor expects to be told the size of the animation canvas */
-    public StarAnimation(int initWidth, int initHeight) {
+    public StarAnimation(int initWidth, int initHeight)
+    {
         super(initWidth, initHeight);
+
     }
 
     /** whenever the canvas size changes, generate new stars */

@@ -6,9 +6,9 @@ public class SubThread extends Thread {
 
     private AnimationView AV;
 
-    public void subThread ()
+    public  SubThread (AnimationView AV)
     {
-
+        this.AV = AV;
     }
 
     @Override

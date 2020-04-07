@@ -16,6 +16,7 @@ import android.widget.SeekBar;
 public class MainActivity extends Activity
         implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
+    public AnimationView myAV1;
     public AnimationView myAV;
     private Button theButton;
     private SeekBar theSeekBar;
@@ -40,10 +41,13 @@ public class MainActivity extends Activity
         theSeekBar = (SeekBar)findViewById(R.id.seekBar);
         theSeekBar.setOnSeekBarChangeListener(this);
 
-         SubThread subThread = new SubThread();
-         subThread.setAV(myAV);
+         SubThread subThread = new SubThread(myAV);
          subThread.start();
 
+        myAV1 = (AnimationView)findViewById(R.id.animationArea);
+        StarAnimation sa = new StarAnimation(myAV1.getMyWidth(), myAV1.getMyHeight());
+        StarThread ST = new StarThread(sa);
+        ST.start();
 
 
     }//onClick
