@@ -19,9 +19,12 @@ public class MainActivity extends Activity
     private AnimationView myAV;
     private Button theButton;
     private SeekBar theSeekBar;
+    private Thread t = new Thread();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        t.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -36,6 +39,9 @@ public class MainActivity extends Activity
         //Let me know when someone adjusts the seekbar
         theSeekBar = (SeekBar)findViewById(R.id.seekBar);
         theSeekBar.setOnSeekBarChangeListener(this);
+
+
+
 
 
     }//onClick
@@ -53,15 +59,18 @@ public class MainActivity extends Activity
 
     /** These two methods aren't used */
     @Override
-    public void onStartTrackingTouch(SeekBar seekBar)
-    {
-        myAV.postInvalidate();
-
-    }
+    public void onStartTrackingTouch(SeekBar seekBar) {}
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
     {
+
         myAV.postInvalidate();
+        try {
+            t.sleep(3000);
+        } catch (InterruptedException e)
+        {
+
+        }
 
     }
 }
