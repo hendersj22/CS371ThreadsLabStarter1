@@ -16,7 +16,7 @@ import android.widget.SeekBar;
 public class MainActivity extends Activity
         implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
-    private AnimationView myAV;
+    public AnimationView myAV;
     private Button theButton;
     private SeekBar theSeekBar;
     private Thread t = new Thread();
@@ -40,7 +40,9 @@ public class MainActivity extends Activity
         theSeekBar = (SeekBar)findViewById(R.id.seekBar);
         theSeekBar.setOnSeekBarChangeListener(this);
 
-
+         SubThread subThread = new SubThread();
+         subThread.setAV(myAV);
+         subThread.start();
 
 
 
@@ -54,7 +56,7 @@ public class MainActivity extends Activity
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         myAV.progressChange(seekBar.getProgress());
-        myAV.postInvalidate();
+       // myAV.postInvalidate();
     }
 
     /** These two methods aren't used */
@@ -64,13 +66,13 @@ public class MainActivity extends Activity
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
     {
 
-        myAV.postInvalidate();
-        try {
-            t.sleep(3000);
-        } catch (InterruptedException e)
-        {
-
-        }
+       // myAV.postInvalidate();
+//        try {
+//            t.sleep(3000);
+//        } catch (InterruptedException e)
+//        {
+//
+//        }
 
     }
 }
