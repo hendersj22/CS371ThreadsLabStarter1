@@ -19,7 +19,7 @@ public class SubThread extends Thread {
             AV.postInvalidate();
             try
             {
-                sleep(3000);
+                sleep(50);
             }
             catch (InterruptedException e) {}
 
